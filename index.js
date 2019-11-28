@@ -1,11 +1,14 @@
+require('dotenv').config()
+
 const express = require('express')
 const app = express()
 const bodyParser = require('body-parser')
 const morgan = require('morgan')
 const cors = require('cors')
+const Person = require('./models/person')
 
-app.use(cors())
 app.use(bodyParser.json())
+app.use(cors())
 app.use(express.static('build'))
 
 morgan.token('post', (req, res) =>{
@@ -17,7 +20,7 @@ morgan.token('post', (req, res) =>{
 
 app.use(morgan(':method :url :status :res[content-length] - :response-time ms :post'))
 
-
+/*
 let persons = [
   {
     name: "Arto Hellas",
@@ -40,19 +43,22 @@ let persons = [
     id: 4
   }
 ]
+*/
 
 app.get('/api/persons', (req, res) => {
+  Person.find({}).then(persons => {
+    response.json(persons.map(person => person.toJSON()))
+  })
   res.json(persons)
 })
 
 app.get('/api/persons/:id', (req, res) => {
-  const id = Number(req.params.id)
-  const person = persons.find(person => person.id === id)
-  if(person) res.json(person)
-  else res.status(204).end()
+  Person.findById(req.params.id).then(person => {
+    res.json(person.toJSON())
+  })
 })
 
-app.get('/api//info', (req, res) => {
+app.get('/api/info', (req, res) => {
   res.send(`
     <p>Phonebook has info for ${persons.length} people</p>
     <p>${new Date()}</p>
