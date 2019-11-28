@@ -87,14 +87,11 @@ app.post('/api/persons', (req, res) => {
       })
     }
     
-
     const person = {
       name: body.name,
       number: body.number,
       id: Math.floor((Math.random() * 100) % 100)
     }
-
-    persons = persons.concat(person)
 
     res.json(person)
 })
@@ -104,7 +101,6 @@ const unknownEndpoint = (request, response) => {
 }
 
 app.use(unknownEndpoint)
-
 
 const PORT = process.env.PORT || 3001
 app.listen(PORT, () => {
