@@ -20,7 +20,6 @@ mongoose.connect(url, { useNewUrlParser: true })
 const personSchema = new mongoose.Schema({
   name: String,
   phoneNumber: String,
-  id: Number,
 })
 
 const Person = mongoose.model('Person', personSchema)
