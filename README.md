@@ -1,8 +1,7 @@
 # phonebook-backend
-Backend portion for the phonebook app.
+Backend portion for the phonebook app
 
-This repo contiains the backend portion of my [phonebook app](https://github.com/enrique-cardenas/phonebook), and the build
-version of the phonebook app.
+This repo contains the backend portion of my [phonebook app](https://github.com/enrique-cardenas/phonebook), and the frontend production build of it as well.
 
 The data is persisted using MongoDB and hosted using MongoDB Atlas.
 
