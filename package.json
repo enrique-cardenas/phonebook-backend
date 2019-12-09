@@ -6,6 +6,7 @@
   "scripts": {
     "start": "node index.js",
     "watch": "nodemon index.js",
+    "lint": "eslint .",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build:ui": "rm -rf build && cd ../phonebook && npm run build --prod && cp -r build ../phonebook-backend/",
     "deploy": "git push heroku master",
@@ -15,6 +16,7 @@
   "author": "Enrique Cardenas",
   "license": "ISC",
   "devDependencies": {
+    "eslint": "^6.7.2",
     "nodemon": "^1.19.4"
   },
   "dependencies": {
